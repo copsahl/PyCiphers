@@ -78,3 +78,136 @@ def caesarCipher(message, shift):
 
 	return hiddenMsg
 
+'''Affine Cipher'''
+affineDic = {
+		'A':0,
+		'B':1,
+		'C':2,
+		'D':3,
+		'E':4,
+		'F':5,
+		'G':6,
+		'H':7,
+		'I':8,
+		'J':9,
+		'K':10,
+		'L':11,
+		'M':12,
+		'N':13,
+		'O':14,
+		'P':15,
+		'Q':16,
+		'R':17,
+		'S':18,
+		'T':19,
+		'U':20,
+		'V':21,
+		'W':22,
+		'X':23,
+		'Y':24,
+		'Z':25,
+	}
+
+
+def affineEncode(message, aKey, bKey):
+	'''Implementation of the affine cipher'''
+
+	global affineDic
+	# Encrypt E(x) = (ax + b)(mod 26)
+	# Decrypt D(x) = ax mod 26
+
+	message = message.upper()
+	charValues = []
+	encodedMsg = ''
+
+	for char in message:
+		for k, v in affineDic.items():
+			if char == k:
+				charValues.append(v)
+
+	for value in charValues:
+		num = ((aKey * value) + bKey) % 26
+		for k, v in affineDic.items():
+			if num == v:
+				encodedMsg += k
+	return encodedMsg
+
+
+def morseCode(message, decode):
+	'''Implementation of Morse Code'''
+
+	morseDic = {
+
+		'A':'.-',
+		'B':'-...',
+		'C':'-.-.',
+		'D':'-..',
+		'E':'.',
+		'F':'..-.',
+		'G':'--.',
+		'H':'....',
+		'I':'..',
+		'J':'.---',
+		'K':'-.-',
+		'L':'.-..',
+		'M':'--',
+		'N':'-.',
+		'O':'---',
+		'P':'.--.',
+		'Q':'--.-',
+		'R':'.-.',
+		'S':'...',
+		'T':'-',
+		'U':'..-',
+		'V':'...-',
+		'W':'.--',
+		'X':'-..-',
+		'Y':'-.--',
+		'Z':'--..',
+		'1':'.----',
+		'2':'..---',
+		'3':'...--',
+		'4':'....-',
+		'5':'.....',
+		'6':'-....',
+		'7':'--...',
+		'8':'---..',
+		'9':'----.',
+		'0':'-----',
+		'.':'.-.-.-',
+		',':'--..--',
+		'?':'..--..',
+		'/':'-..-.',
+		'@':'.--.-.',
+		' ':'/'
+	}
+
+	message = message.upper()
+	encodedMsg = ''
+
+	if decode == False:
+
+		for char in message:
+			for k,v in morseDic.items():
+				if char == k:
+					encodedMsg += (str(v) + " ")
+
+	elif decode == True:
+		if '/' in message:
+			words = message.split(" / ")
+			for x in range(0, len(words)):
+				letters = words[x].split(" ")
+				for x in range(0, len(letters)):
+					for k, v in morseDic.items():
+						if letters[x] == v:
+							encodedMsg += k
+				encodedMsg += " "
+
+		else:
+			letters = message.split(" ")
+			for x in range(0, len(letters)):
+				for k,v in morseDic.items():
+					if letters[x] == v:
+						encodedMsg += k
+
+	return encodedMsg
