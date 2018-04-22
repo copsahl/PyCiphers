@@ -79,57 +79,27 @@ def caesarCipher(message, shift):
 	return hiddenMsg
 
 '''Affine Cipher'''
-affineDic = {
-		'A':0,
-		'B':1,
-		'C':2,
-		'D':3,
-		'E':4,
-		'F':5,
-		'G':6,
-		'H':7,
-		'I':8,
-		'J':9,
-		'K':10,
-		'L':11,
-		'M':12,
-		'N':13,
-		'O':14,
-		'P':15,
-		'Q':16,
-		'R':17,
-		'S':18,
-		'T':19,
-		'U':20,
-		'V':21,
-		'W':22,
-		'X':23,
-		'Y':24,
-		'Z':25,
-	}
-
+affineDic = string.ascii_uppercase
 
 def affineEncode(message, aKey, bKey):
 	'''Implementation of the affine cipher'''
 
 	global affineDic
-	# Encrypt E(x) = (ax + b)(mod 26)
-	# Decrypt D(x) = ax mod 26
 
 	message = message.upper()
 	charValues = []
 	encodedMsg = ''
 
 	for char in message:
-		for k, v in affineDic.items():
-			if char == k:
-				charValues.append(v)
+		for val in range(0,len(affineDic)):
+			if char == affineDic[val]:
+				charValues.append(val)
 
 	for value in charValues:
 		num = ((aKey * value) + bKey) % 26
-		for k, v in affineDic.items():
-			if num == v:
-				encodedMsg += k
+		for val in range(0, len(affineDic)):
+			if num == val:
+				encodedMsg += affineDic[val]
 	return encodedMsg
 
 
