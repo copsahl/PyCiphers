@@ -1,6 +1,9 @@
 # PyCiphers
 My not so efficient implementation of some simple ciphers and codes written in python.
 
+# interface.py
+A very hacky menu that ties all my code together. 
+
 # Current Cipher/Encoding Functions
  - ROT13
  - ROT47
