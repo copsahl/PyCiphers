@@ -1,5 +1,5 @@
 # PyCiphers
-My not so efficient implementation of some simple ciphers and codes written in python.
+My not so efficient implementation of some simple ciphers and encoding, written in python.
 
 # interface.py
 A very hacky menu that ties all my code together. 
