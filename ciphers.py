@@ -163,21 +163,10 @@ def morseCode(message, decode):
 					encodedMsg += (str(v) + " ")
 
 	elif decode == True:
-		if '/' in message:
-			words = message.split(" / ")
-			for x in range(0, len(words)):
-				letters = words[x].split(" ")
-				for x in range(0, len(letters)):
-					for k, v in morseDic.items():
-						if letters[x] == v:
-							encodedMsg += k
-				encodedMsg += " "
-
-		else:
-			letters = message.split(" ")
-			for x in range(0, len(letters)):
-				for k,v in morseDic.items():
-					if letters[x] == v:
-						encodedMsg += k
+		letters = message.split(" ")
+		for x in range(0, len(letters)):
+			for k,v in morseDic.items():
+				if letters[x] == v:
+					encodedMsg += k
 
 	return encodedMsg
