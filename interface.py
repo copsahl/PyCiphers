@@ -16,7 +16,7 @@ def menu():
       /____/       /_/                       
 		''')
 
-	print("Pick a cipher/code:")
+	print("Pick a cipher/encoding function:")
 	print("\t- Caesar Cipher(cc)\t- Morse Code(mc)")
 	print("\t- ROT13(r13)")
 	print("\t- ROT47(r47)")
